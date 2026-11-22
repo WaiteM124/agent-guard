@@ -1,0 +1,20 @@
+version: 1
+default: deny
+approval_ttl: 30m
+tools:
+  read_invoice:
+    effect: allow
+    reason: Reading an invoice has no side effect
+  create_supplier:
+    effect: require_approval
+    reason: New suppliers change who can be paid
+  make_payment:
+    effect: require_approval
+    reason: Payments up to 1000 require approval
+    conditions:
+      - when: "amount > 1000"
+        effect: deny
+        reason: Payments above 1000 are denied
+      - when: "amount <= 0"
+        effect: deny
+        reason: Amount must be positive
