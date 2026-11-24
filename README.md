@@ -180,6 +180,7 @@ pip install -e ".[dev]"
 ruff check . && ruff format --check .
 mypy src
 pytest
+pytest --agent-guard-redteam
 ```
 
-CI runs those on Python 3.10, 3.11, and 3.12. Design notes for the policy format, state machine, and audit chain are in `docs/design.md`. Publishing to PyPI is a tag-only workflow and expects a trusted publisher; it does not run on branch pushes.
+CI runs lint, mypy, and tests on Python 3.10–3.12, plus a deterministic red-team eval gate. Contributor setup, PR conventions, and the definition of done are in [CONTRIBUTING.md](CONTRIBUTING.md); agents should read [AGENTS.md](AGENTS.md). Design notes for the policy format, state machine, and audit chain are in `docs/design.md`; decision records are under `docs/decisions/`. Publishing to PyPI is a tag-only workflow and expects a trusted publisher; it does not run on branch pushes.
