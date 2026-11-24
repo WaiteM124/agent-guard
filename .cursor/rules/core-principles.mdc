@@ -1,0 +1,16 @@
+---
+description: Non-negotiable agent-guard product and contribution principles
+alwaysApply: true
+---
+
+# agent-guard core principles
+
+Canonical detail: `AGENTS.md`.
+
+- **Default deny.** Unknown tools denied; invalid policy fails at load (`PolicyError`).
+- **Schema before policy before side effects.** Pydantic with `extra="forbid"` first; smuggled fields must never reach policy or tools.
+- **Four-eyes.** Proposer cannot approve their own action; they may reject. Actor ids are host strings — this library does not authenticate them.
+- **Wired-path honesty.** Enforcement only applies to calls routed through `Guard`. Do not claim broader control.
+- **Auditable decisions.** Hash-chained audit for schema, policy, human, expiry, and execution outcomes. Prefer arg hashes in the log.
+- **Do not weaken tests** to green CI. Keep PRs small and scoped. No secrets in the repo.
+- Prefer matching existing patterns. State assumptions in the PR. When rules conflict, `AGENTS.md` wins.

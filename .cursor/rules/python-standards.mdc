@@ -1,0 +1,16 @@
+---
+description: Python engineering standards for library, tests, and examples
+globs: "**/*.py"
+alwaysApply: false
+---
+
+# Python standards
+
+Canonical detail: `AGENTS.md`.
+
+- Target **Python 3.10+**. Type hints on public APIs; **Pydantic v2** models at tool-argument boundaries (prefer `extra="forbid"`). Package is typed (`py.typed`); `mypy` runs strict on `src`.
+- Keep the core free of optional framework imports at module import time where the package already lazy-loads (see `__init__.py` / integrations).
+- Logging via `logging.getLogger("agent_guard")` with structured key=value fields; never log secrets or full sensitive payloads when a hash suffices.
+- Tests are the spec: known-answer cases for policy effects, approval transitions, idempotency, and audit chain verify. Place tests under `tests/`.
+- Before finishing: `ruff check . && ruff format --check .`, `mypy src`, and `pytest` (add `pytest --agent-guard-redteam` when changing governance or red-team behaviour).
+- Do not mass-reformat unrelated files. Do not bump dependency pins unless the task asks for it.
