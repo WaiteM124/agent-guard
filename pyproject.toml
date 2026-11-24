@@ -22,7 +22,7 @@ classifiers = [
 ]
 dependencies = [
     "pydantic>=2",
-    "PyYAML>=6",
+    "PyYAML>=6.0.4",
 ]
 
 [project.optional-dependencies]
