@@ -26,7 +26,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-langgraph = ["langgraph>=0.2"]
+langgraph = ["langgraph>=1.2.24"]
 mcp = ["mcp>=1.0"]
 dev = [
     "mypy>=1.13",
